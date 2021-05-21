@@ -65,6 +65,6 @@ def saludo_parametros(request):
     docPagSaludo = plt.render(ctx)
     return HttpResponse(docPagSaludo)
 
-
+#f
 
     
