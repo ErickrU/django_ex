@@ -9,5 +9,61 @@
 <body>
     <h1>yo</h1>
     <p>alumno se llama: {{nombre_estudiante}} {{apellido_estudiante}}</p>
+    <p>{{arreglo_1}}</p>
+    <p>{{arreglo_1.0}}</p>
+    <p>{{arreglo_1.1}}</p>
+    <p><strong>
+        Arreglo Externo
+    </strong></p>
+    <p> 
+        {{arreglo_2.0}}
+    </p>
+    <p> 
+        {{arreglo_2.1}}
+    </p>
+    <p> 
+        {{arreglo_2.2}}
+    </p>
+    <p>
+        <strong>
+            Cliclos For
+        </strong>
+    </p>
+
+    <p>
+        {% for apuntador in arreglo_3 %}
+            <p>
+                {{apuntador}}
+            </p>
+        {%endfor%}
+    </p>
+
+    <p>
+        <ul>
+            {%for apuntador  in arreglo_3%}
+            <li>{{apuntador}}</li>
+            {%endfor%}
+        </ul>
+    </p>
+    
+    <p>
+        <strong>
+            Condicionales
+        </strong>
+    </p>
+
+    <p>
+        {% if fecha.day == 2 %}
+
+        <p>
+            El dia de hoy es correcto
+        </p>
+        {% else %}
+        <p>
+            El dia de hoy es diferente
+        </p>
+
+        {% endif %}
+    </p>
 </body>
 </html>

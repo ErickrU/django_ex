@@ -22,6 +22,8 @@ from basics.views import calculadora_años
 from basics.views import saludo_dinamico
 from basics.views import saludo_parametros
 from basics.views import calculadora_años_plus
+from basics.views import saludoShorCut
+from basics.views import saludo_loader, carrera_tics, carrera_papalotes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +33,10 @@ urlpatterns = [
     path('edad/<int:año>/<int:edad>', calculadora_años),
     path('edadplus/<int:dia>/<int:mes>/<int:año>/<int:edad_futura>', calculadora_años_plus),
     path('holi/', saludo_dinamico),
-    path('salu2/', saludo_parametros)
+    path('salu2/', saludo_parametros),
+    path('salu3/', saludoShorCut),
+    path('salu4/', saludo_loader),
+    path('Tics/', carrera_tics),
+    path('papalotes/', carrera_papalotes),
+
 ]
