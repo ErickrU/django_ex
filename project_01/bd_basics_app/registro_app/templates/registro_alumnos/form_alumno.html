@@ -1,0 +1,24 @@
+{% extends "registro_alumnos/base.html" %}
+
+{% block content %}
+
+<p> Esta es la pagina del formulario OwO</p>
+
+<form action="" method="POST" autocomplete="off">
+    {%csrf_token%}
+    {{form}}
+    <button type="submit"><i class="fa fa-save"></i> Enviar a BD</button>
+
+    <div>
+        <a href="{% url 'lista_alumnos' %}" class="btn btn-secondary btn-block btn-lg">
+            <i class="fas fa-stream"></i> Regresar al listado de alumnos 
+        </a>
+        
+
+    </div>
+
+
+</form>
+
+
+{% endblock content%}

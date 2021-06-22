@@ -1,0 +1,60 @@
+{% extends "form/base.html" %}
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand " href="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg">
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+            <i>Productos</i>                            
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+    </a>
+    <a class="col text-right">   
+        <a href="{% url 'select_clients' %}"><pre><i>Clientes  </i></pre></a>
+        <a href="{% url 'select_products' %}"><pre><i>Productos  </i></pre></a>
+        <a href="{% url 'select_order' %}"><pre><i>pedidos  </i></pre></a>        
+    </a>  
+</nav>
+
+<div class="position-absolute top-0 start-50 translate-middle" >
+</div>
+<table class="table table-hover">
+<thead>
+<tr>
+    <th scope="col">Codigo del producto</th>
+    <th scope="col">Nombre del producto</th>
+    <th scope="col">Descripcion del producto</th>
+    <th scope="col">Codigo del proveedor</th>
+    <th scope="col">Precio por unidad</th>
+    <th scope="col">Unidad en existencia</th>
+    <th scope="col">
+        <a href="{% url 'insert_products' %}" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </th>
+
+</tr>
+</thead>    
+
+    <tbody>
+    
+        {% for products in select_products %}
+            <tr>
+                <th scope="row">{{products.product_code}}</th>
+                <td><i>{{products.product_name}}</i></td>
+                <td><i>{{products.description_product}}</i></td>
+                <td><i>{{products.supplier_code}}</i></td>
+                <td><i>{{products.unity_price}}</i></td>
+                <td><i>{{products.unit_in_stock}}</i></td>
+                <td>
+                    <a href="{% url 'update_products' products.product_code %}" class="btn btn-success">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+                    </a>
+                    <a href="{% url 'delete_products' products.product_code %}" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"> </i>
+                    </a> 
+                </td> 
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+{% endblock content%}

@@ -1,0 +1,52 @@
+{% extends "registro_alumnos/base.html" %}
+
+{% block content %}
+
+<p>Esta es la pagina para listar los elementos de la BD </p>
+
+<table>
+<tr>
+    <td>Nombre</td>
+    <td>Apellido paterno</td>
+    <td>Apellido materno</td>
+    <td>Numero de control</td>
+    <td>Cuatrimestre</td>
+    <td>Grupo</td>
+    <td>
+        <a href="{% url 'insert_alumnos' %}" class="btn btn-outline-sucess">
+            <i class="fas fa-plus"></i>
+        </a>
+    </td>    
+
+    <tbody>
+        {% for alumno in listar_alumnos %}
+            <tr>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.apellido_paterno}}</td>
+                <td>{{alumno.apellido_materno}}</td>
+                <td>{{alumno.no_control}}</td>
+                <td>{{alumno.cuatrimestres}}</td>
+                <td>{{alumno.grupo}}</td>
+
+                <td>
+                    <a href="{% url 'update_registros' alumno.id %}" class="btn text-secondary px-0">
+                        <i class="fa fa-edit fa-lg"></i>
+                    </a>
+
+                    <form action="{% url 'delete_registros' alumno.id %}" method="POST">
+                        {%csrf_token%}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg"></i>
+                        </button>
+                    </form>
+
+                </td>
+
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</tr>
+</table>
+
+{% endblock content%}

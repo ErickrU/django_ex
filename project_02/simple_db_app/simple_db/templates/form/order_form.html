@@ -1,0 +1,35 @@
+{% extends "form/base.html" %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %} 
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg">
+    <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+    <i>Formulario para pedidos</i>                            
+    <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+  </a>
+</nav>
+<div class="position-absolute top-20 start-50 translate-middle-x">
+    <form action="" method="POST" autocomplete="off" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <div class="col text-center">
+            <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> save</button>
+        </div>
+        <br>
+        <div class="col text-center">
+            <a href="{% url 'select_order' %}" class="btn btn-primary">
+                <i class="fa fa-list" aria-hidden="true"></i> lista ordenes
+            </a>
+        </div>
+        <!-- {% if form.errors %} 
+            <script>
+                alert("al parecer hay un error con los datos que agregaste :P");
+            </script>
+        {% endif %} -->
+
+    </form>
+</div>
+
+{% endblock content%}

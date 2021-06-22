@@ -1,0 +1,58 @@
+{% extends "form/base.html" %}
+
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand " href="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg">
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+            <i>Pedidos</i>                            
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+    </a>
+    <a class="col text-right">   
+        <a href="{% url 'select_clients' %}"><pre><i>Clientes  </i></pre></a>
+        <a href="{% url 'select_products' %}"><pre><i>Productos  </i></pre></a>
+        <a href="{% url 'select_order' %}"><pre><i>pedidos  </i></pre></a>        
+    </a>  
+</nav>
+
+<div class="position-absolute top-0 start-50 translate-middle" >
+</div>
+<table class="table table-hover">
+<thead>
+<tr>
+    <th scope="col">Codigo del pedido</th>
+    <th scope="col">Numero del pedido</th>
+    <th scope="col">Codigo del cliente</th>
+    <th scope="col">Codigo del producto</th>
+    <th scope="col">
+        <a href="{% url 'insert_order' %}" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </th>
+
+</tr>
+</thead>    
+
+    <tbody>
+    
+        {% for order in select_order %}
+            <tr>
+                <th scope="row">{{order.order_code}}</th>
+                <td><i>{{order.order_number}}</i></td>
+                <td><i>{{order.client_code}}</i></td>
+                <td><i>{{order.product_code}}</i></td>
+                <td>
+                    <a href="{% url 'update_order' order.order_code %}" class="btn btn-success">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+                    </a>
+                    <a href="{% url 'delete_order' order.order_code %}" class="btn btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"> </i>
+                    </a> 
+                </td> 
+
+            </tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+{% endblock content%}
