@@ -1,0 +1,6 @@
+django 
+
+- migrations
+
+python .\manage.py makemigrations simple_db
+python .\manage.py sqlmigrate simple_db 0002
