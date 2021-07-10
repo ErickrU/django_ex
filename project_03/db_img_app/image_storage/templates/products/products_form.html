@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>subir imagenes</title>
+</head>
+<body style="background-color:#F4F6F6;">
+
+
+<div class="position-absolute top-20 start-50 translate-middle-x">
+    <br>
+    <form method = "post" enctype="multipart/form-data" class="" novalidate>
+        {% csrf_token %}
+
+        <div class="col text-center">
+
+            <div class="container">
+                <h1>
+                    <i>
+                        Formulario
+                    </i>
+                </h1>
+                <br>    
+                <h5>
+                <i>
+                    {{ form.product_code|as_crispy_field  }}
+                    <br>
+                    {{ form.product_name|as_crispy_field  }}
+                    <br>
+                    {{ form.description_product|as_crispy_field  }}
+                    <br>
+                    {{ form.supplier_code|as_crispy_field  }}
+                    <br>
+                    {{ form.unity_price|as_crispy_field  }}
+                    <br>
+                    {{ form.unit_in_stock|as_crispy_field  }}
+                    <br>
+                    {{ form.prodcuts_img_name|as_crispy_field  }}
+                    <br>
+                    {{ form.prodcuts_img_img|as_crispy_field  }}
+                    <br>
+                </i>
+                </h5>
+                </div>
+                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> save</button>
+                <br><br>
+                <a href="{% url 'products_display' %}" class="btn btn-primary">
+                    <i class="fa fa-list" aria-hidden="true"></i> lista productos
+                </a>
+                <br><br><br>
+            </div>
+
+        </div>
+
+        <br><br>
+    </form>
+<div>
+</body>
+</html>
+{% endblock %}

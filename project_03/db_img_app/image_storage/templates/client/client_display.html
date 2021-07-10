@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand " href="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg">
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+            <i>Clientes</i>                            
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+    </a>
+    <a class="col text-right">   
+        <a href="{% url 'client_display' %}"><pre><i>Clientes  </i></pre></a>
+        <a href="{% url 'products_display' %}"><pre><i>Productos  </i></pre></a>
+        <a href="{% url 'order_display' %}"><pre><i>pedidos  </i></pre></a> 
+    </a>   
+</nav>
+<div class="position-absolute top-0 start-50 translate-middle" >
+</div>
+<table class="table table-hover">
+<thead>
+<tr>
+    <th scope="col ">ID database</th>
+    <th scope="col ">Codigo del cliete</th>
+    <th scope="col">Empresa</th>
+    <th scope="col">Nombres</th>
+    <th scope="col">Apellidos</th>
+    <th scope="col">Puesto</th>
+    <th scope="col">Direccion</th>
+    <th scope="col">Poblacion</th>
+    <th scope="col">Telefono</th>
+    <th scope="col">Codigo postal</th>
+    <th scope="col">Tarjeta de credito</th>
+    <th scope="col">Nombre imagen producto</th>
+    <th scope="col">Imagen</th>
+    <th scope="col">
+        <a href="{% url 'form_client' %}" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </th>
+
+</tr>
+</thead>    
+    <tbody>
+        {% for client in print_client %} 
+        <tr>
+            <th scope="row">{{client.id}}</th>
+            <td><i>{{client.client_code}}</td>
+            <td><i>{{client.enterprise}}</i></td>
+            <td><i>{{client.first_name_client}}</i></td>
+            <td><i>{{client.last_name_client}}</i></td>
+            <td><i>{{client.position}}</i></td>
+            <td><i>{{client.direction}}</i></td>
+            <td><i>{{client.population}}</i></td>
+            <td><i>{{client.telephone_number}}</i></td>
+            <td><i>{{client.zip_code}}</i></td>
+            <td><i>{{client.credit_card}}</i></td>
+            <td><i>{{client.client_img_name}}</i></td>
+            <td><img src="{{client.client_img_img.url}}" alt="Smiley Face" wdith="100" height="100"/></td>
+            <td>
+                <a href="{% url 'update_client' client.id %}" class="btn btn-success">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+                </a>
+                <a href="{% url 'delete_client' client.id %}" class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"> </i>
+                </a> 
+            </td>
+        </tr>
+        {% endfor %}
+            
+    </tbody> 
+</table>
+{% endblock content %}

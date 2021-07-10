@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand " href="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg">
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+            <i>Productos</i>                            
+        <img src="https://img1.freepng.es/20180316/slw/kisspng-rubber-duck-natural-rubber-clip-art-rubber-duck-png-5aab962344c604.7632633615211945312817.jpg" width="35" height="35" class="d-inline-block align-top" alt="">
+    </a>
+    <a class="col text-right">   
+        <a href="{% url 'client_display' %}"><pre><i>Clientes  </i></pre></a>
+        <a href="{% url 'products_display' %}"><pre><i>Productos  </i></pre></a>
+        <a href="{% url 'order_display' %}"><pre><i>pedidos  </i></pre></a> 
+    </a>   
+</nav>
+<div class="position-absolute top-0 start-50 translate-middle" >
+</div>
+<table class="table table-hover">
+<thead>
+<tr>
+    <th scope="col ">ID database</th>
+    <th scope="col ">Codigo del producto</th>
+    <th scope="col">Prodcuto</th>
+    <th scope="col">Descripcion del producto</th>
+    <th scope="col">Codigo de proveedor</th>
+    <th scope="col">Precio unitario</th>
+    <th scope="col">Unidades en stock</th>
+    <th scope="col">Nombre de la imagen</th>
+    <th scope="col">Imagen</th>
+    <th scope="col">
+        <a href="{% url 'form_products' %}" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+        </a>
+    </th>
+
+</tr>
+</thead>    
+    <tbody>
+        {% for products in print_products %} 
+        <tr>
+            <th scope="row">{{products.id}}</th>
+            <td><i>{{products.product_code}}</td>
+            <td><i>{{products.product_name}}</i></td>
+            <td><i>{{products.description_product}}</i></td>
+            <td><i>{{products.supplier_code}}</i></td>
+            <td><i>{{products.unity_price}}</i></td>
+            <td><i>{{products.unit_in_stock}}</i></td>
+            <td><i>{{products.prodcuts_img_name}}</i></td>
+            <td><img src="{{products.prodcuts_img_img.url}}" alt="Smiley Face" wdith="100" height="100"/></td>
+            <td>
+                <a href="{% url 'update_products' products.id %}" class="btn btn-success">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"> </i>
+                </a>
+                <a href="{% url 'delete_products' products.id %}" class="btn btn-danger">
+                    <i class="fa fa-trash" aria-hidden="true"> </i>
+                </a> 
+            </td>
+        </tr>
+        {% endfor %}
+            
+    </tbody> 
+</table>
+{% endblock content %}

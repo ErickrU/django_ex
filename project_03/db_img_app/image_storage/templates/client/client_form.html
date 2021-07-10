@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>subir imagenes</title>
+</head>
+<body style="background-color:#F4F6F6;">
+
+
+<div class="position-absolute top-20 start-50 translate-middle-x">
+    <br>
+    <form method = "post" enctype="multipart/form-data" class="" novalidate>
+        {% csrf_token %}
+
+        <div class="col text-center">
+
+            <div class="container">
+                <h1>
+                    <i>
+                        Formulario
+                    </i>
+                </h1>
+                <br>    
+                <h5>
+                <i>
+                    {{ form.client_code|as_crispy_field  }}
+                    <br>
+                    {{ form.enterprise|as_crispy_field  }}
+                    <br>
+                    {{ form.first_name_client|as_crispy_field  }}
+                    <br>
+                    {{ form.last_name_client|as_crispy_field  }}
+                    <br>
+                    {{ form.position|as_crispy_field  }}
+                    <br>
+                    {{ form.direction|as_crispy_field  }}
+                    <br>
+                    {{ form.population|as_crispy_field  }}
+                    <br>
+                    {{ form.telephone_number|as_crispy_field  }}
+                    <br>
+                    {{ form.zip_code|as_crispy_field  }}
+                    <br>
+                    {{ form.credit_card|as_crispy_field  }}
+                    <br>
+                    {{ form.client_img_name|as_crispy_field  }}
+                    <br>
+                    {{ form.client_img_img|as_crispy_field  }}
+                    <br>
+                </i>
+                </h5>
+                </div>
+                <button class="btn btn-success" type="submit"><i class="fa fa-save"></i> save</button>
+                <br><br>
+                <a href="{% url 'client_display' %}" class="btn btn-primary">
+                    <i class="fa fa-list" aria-hidden="true"></i> lista clientes 
+                </a>
+                <br><br><br>
+            </div>
+
+        </div>
+
+        <br><br>
+    </form>
+<div>
+</body>
+</html>
+{% endblock %}
